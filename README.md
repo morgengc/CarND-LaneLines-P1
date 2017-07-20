@@ -20,11 +20,11 @@ My pipeline consisted of 5 steps:
 - Fourth, I got all hough lines according to canny edges, and simulated both left and right lane line
 - Fifth, I overlying my lane line on top of original image
 
-In order to draw a single line on the left and right lanes, I modified the `draw_lines()` function as follows:
+In order to draw a single line on the left and right lanes, I modified the `draw_lines()` function in step 4:
 
 - Distinguish left and right lane by *slope*. This work is done in `get_lane_line()` function
 - Individually get all points of left line and right line in `get_end_points()`
-- Using the points to do linear regression for both lines in `linear_regression()`. I made an assumption that `abs(slope)` will greater than `0.5` for both line. In order to make the over layer line start for the bottom top of the image, I extend the start point's `x` using: `x1 = (x1/3 if gradient <= 0 else x1)` for left line and `x2 = (x2*3 if gradient >= 0 else x2)` for right line
+- Using the points to do linear regression for both lines in `linear_regression()`. I made an assumption that `abs(slope)` will greater than `0.5` for both line. In order to make the over layer line start from the bottom of the image, I extend the start point's `x` using: `x1 = (x1/3 if gradient <= 0 else x1)` for left line and `x2 = (x2*3 if gradient >= 0 else x2)` for right line
 
 ### 2. Potential shortcomings with current pipeline
 
